@@ -1,0 +1,40 @@
+<div style="padding-left: 20px; padding-right: 20px;" class="jumbotron">
+	<div class="input-group">
+   		<input type="text" data-ng-model="selectedSensorId" placeholder="Water Meter Number" class="form-control">
+   		<span class="input-group-btn">
+        	<button class="btn btn-primary" data-ng-click="getUsagePerGivenId(selectedSensorId)" type="button">FETCH</button>
+   		</span>
+	</div>
+	 <!-- <div class="form-group">
+  		<label for="usr">Water Meter Number</label>
+  		<input style="display: inline-block; width: 80%;" type="text" class="form-control" data-ng-model="selectedSensorId" placeholder="Please type the water meter number" id="usr">
+  		<button class="btn btn-primary" style="display: inline-block; width: 20%" data-ng-click="getUsagePerGivenId(selectedSensorId)">FETCH</button>
+	</div> -->
+ </div>
+
+ <div style="padding-left: 20px; padding-right: 20px;" class="jumbotron" data-ng-show="datesGrouped.length > 0">
+ 	<div class="form-group">
+ 		<label for="totalConsumption">Total Consumption</label>
+ 		<p id="totalConsumption">{{totalConsumption}} m<sup>3</sup></p>
+ 	</div>
+ </div>
+
+ <div class="jumbotron" data-ng-show="datesGrouped.length > 0">
+	<div style="padding-left: 20px; padding-right: 20px;" data-ng-repeat="date in datesGrouped track by $index"> 
+		{{date.day}}
+			<table class="table table-stripped"> 
+				<thead>
+					<tr>
+						<th> Time </th>
+						<th> Consumption </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="time in date.times track by $index">
+						<td>{{time}} </td>
+						<td>0.1 m<sup>3</sup> </td>
+					</tr>
+				</tbody>
+			</table> 
+	</div>
+ </div>
