@@ -30,12 +30,10 @@ app.controller('mainViewController', ['$scope', 'dataService', '$state', functio
     }
 
     $scope.$watch('litreUsageRaw', function (){
-    	// data has id value createdAt
     	var dates = $scope.litreUsageRaw.map(function (x){
     		return x.createdAt;
     	});
-
-    	// Modify this code to take value into account.
+        
     	$scope.datesGrouped = dates.reduce(function(acc, d){
     		var p = getDateKey(d);
     		if (!acc[0].hasOwnProperty(p)) acc[0][p] = [];
